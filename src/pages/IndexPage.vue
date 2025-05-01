@@ -22,11 +22,24 @@
 </template>
 
 <script setup>
-function download() {
-  const link = document.createElement('a')
-  link.href =
-    'https://github.com/stijn-rombouts/topdag-project-website/releases/download/0.1/test10.apk'
-  link.download = 'test10.apk'
-  link.click()
+import axios from 'axios'
+
+async function download() {
+  try {
+    const response = await axios.get(
+      'https://api.github.com/repos/stijn-rombouts/topdag-project-website/releases/latest',
+    )
+    const asset = response.data.assets.find((a) => a.name.endsWith('.apk'))
+    if (asset) {
+      const link = document.createElement('a')
+      link.href = asset.browser_download_url
+      link.download = asset.name
+      link.click()
+    } else {
+      console.error('No APK file found in the latest release.')
+    }
+  } catch (error) {
+    console.error('Failed to fetch the latest release:', error)
+  }
 }
 </script>
