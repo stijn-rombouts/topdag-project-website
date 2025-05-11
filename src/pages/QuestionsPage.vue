@@ -1,19 +1,21 @@
 <template>
-  <q-page class="flex flex-center bg-dark">
+  <q-page class="flex flex-center bg-dark text-white">
     <div class="column items-center q-pa-md">
-      <h2 class="q-my-xs">Vragen</h2>
+      <h2 class="q-my-xs text-weight-bold">Vragen</h2>
       <h5 class="q-my-xs">{{ currentSet.title }}</h5>
       <div v-if="!showResult">
         <div v-for="(question, index) in questions" :key="index" class="q-my-md">
-          <p class="q-mb-none">{{ question.text }}</p>
-          <div class="row q-mt-none q-mb-sm" style="flex-wrap: wrap">
+          <p class="q-mb-none text-center">{{ question.text }}</p>
+          <div class="row q-mt-none q-mb-sm justify-center" style="flex-wrap: wrap">
             <q-btn
               v-for="(choice, choiceIndex) in question.choices"
               :key="choiceIndex"
               :label="choice.text"
               @click="selectAnswer(index, choiceIndex)"
               :color="selectedAnswers[index] === choiceIndex ? 'primary' : 'secondary'"
+              text-color="black"
               class="q-mx-xs q-my-xs"
+              style="width: 15rem"
             />
           </div>
         </div>
