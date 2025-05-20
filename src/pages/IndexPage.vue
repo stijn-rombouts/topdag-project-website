@@ -23,12 +23,13 @@
 
 <script setup>
 function downloadApk() {
-  const apkUrl = 'https://github.com/stijn-rombouts/topdag-project-website/releases/download/1.4/FutureLensV1.4.0.apk';
-  const anchor = document.createElement('a');
-  anchor.href = apkUrl;
-  anchor.download = ''; // Optional: specify a filename here
-  document.body.appendChild(anchor);
-  anchor.click();
-  document.body.removeChild(anchor);
+  const apkUrl =
+    'https://github.com/stijn-rombouts/topdag-project-website/releases/download/1.4.2/FutureLensV1.4.2.apk'
+  const anchor = document.createElement('a')
+  anchor.href = apkUrl
+  anchor.download = '' // Optional: specify a filename here
+  document.body.appendChild(anchor)
+  anchor.click()
+  document.body.removeChild(anchor)
 }
 </script>
